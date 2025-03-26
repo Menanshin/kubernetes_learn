@@ -13,6 +13,8 @@ spec:
       mountPath: /usr/local/nginx/conf/.htpasswd
       subPath: .htpasswd
       readOnly: true
+    - name: persistent-storage
+      mountPath: /usr/share/nginx/html
     env:
     - name: NGINX_ENTRYPOINT_QUIET_LOGS
       value: "1"
@@ -23,3 +25,6 @@ spec:
   - name: auth-secret
     secret:
       secretName: nginx-basic-auth
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: nginx-pvc
