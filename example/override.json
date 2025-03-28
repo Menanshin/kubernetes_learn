@@ -4,7 +4,7 @@
         {
           "name": "check-exchange-rates",
           "image": "alpine/curl",
-          "command": ["sh", "-c", "cat /data/exchange-rates.xml"],
+          "command": ["sh", "-c", "ls -la /data/"],
           "volumeMounts": [
             {
               "name": "data-volume",
@@ -23,4 +23,3 @@
       ]
     }
   }
-  
