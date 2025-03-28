@@ -40,11 +40,17 @@ spec:
           mountPropagation: HostToContainer
           name: root
           readOnly: true
+      nodeSelector:
+        kubernetes.io/os: linux
       securityContext:
         fsGroup: 65534
         runAsGroup: 65534
         runAsNonRoot: true
         runAsUser: 65534
+      tolerations:
+      - key: ""
+        effect: NoSchedule
+        operator: Exists
       volumes:
       - hostPath:
           path: /proc
