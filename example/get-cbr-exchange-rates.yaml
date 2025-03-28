@@ -8,6 +8,18 @@ spec:
     spec:
       template:
         spec:
+          initContainers:
+          - name: clean-old-files
+            image: alpine
+            command: ["sh", "-c"]
+            args:
+            - |
+              # Удаляем все файлы, кроме двух последних
+              cd /data
+              ls -t *.xml | tail -n +3 | xargs rm -f
+            volumeMounts:
+            - name: data-volume
+              mountPath: /data        
           containers:
           - name: curl
             image: alpine/curl
